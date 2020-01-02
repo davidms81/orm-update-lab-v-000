@@ -56,7 +56,7 @@ def self.create(name, grade)
     DB[:conn].execute(sql, self.name, self.grade, self.id)
   end
 
-  def self.new_from_db(row)
+  def self.new_from_db
     # create a new Student object given a row from the database
     new_student = self.new  # self.new is the same as running Student.new
     new_student.id = row[0]
