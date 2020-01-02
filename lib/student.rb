@@ -39,10 +39,10 @@ class Student
   end
 end
 
-def self.create(name:, album:)
-    song = Song.new(name, album)
-    song.save
-    song
+def self.create(name:, grade:)
+    student = Song.new(name, grade)
+    student.save
+    student
   end
 
   def self.find_by_name(name)
