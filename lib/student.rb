@@ -51,6 +51,11 @@ def self.create(name:, grade:)
     Student.new(result[0], result[1], result[2])
   end
 
+  def update
+    sql = "UPDATE students SET name = ?, grade = ? WHERE id = ?"
+    DB[:conn].execute(sql, self.name, self.album, self.id)
+  end
+
   # Remember, you can access your database connection anywhere in this class
   #  with DB[:conn]
 
