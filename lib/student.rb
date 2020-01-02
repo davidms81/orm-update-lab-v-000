@@ -57,33 +57,13 @@ def self.create(name, grade)
   end
 
   def self.new_from_db(row)
-    # create a new Student object given a row from the database
-    new_student = self.new  # self.new is the same as running Student.new
-    new_student.id = row[0]
-    new_student.name = row[1]
-    new_student.grade = row[2]
-    new_student  # return the newly created instance
-  end
+      id = row[0]
+      name = row[1]
+      grade = row[2]
 
-  def self.find_by_name(name)
-    # find the student in the database given a name
-    # return a new instance of the Student class
-    sql = <<-SQL
-      SELECT *
-      FROM students
-      WHERE name = ?
-      LIMIT 1
-    SQL
+      self.new(id, name, grade)
+    end
 
-    DB[:conn].execute(sql, name).map do |row|
-      self.new_from_db(row)
-    end.first
-  end
-
-  def update
-    sql = "UPDATE students SET name = ?, grade = ? WHERE name = ?"
-    DB[:conn].execute(sql, self.name, self.grade, self.name)
-  end
 
   # Remember, you can access your database connection anywhere in this class
   #  with DB[:conn]
