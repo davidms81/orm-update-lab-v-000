@@ -81,8 +81,8 @@ def self.create(name, grade)
   end
 
   def update
-    sql = "UPDATE songs SET name = ?, album = ? WHERE name = ?"
-    DB[:conn].execute(sql, self.name, self.album, self.name)
+    sql = "UPDATE students SET name = ?, grade = ? WHERE name = ?"
+    DB[:conn].execute(sql, self.name, self.grade, self.name)
   end
 
   # Remember, you can access your database connection anywhere in this class
